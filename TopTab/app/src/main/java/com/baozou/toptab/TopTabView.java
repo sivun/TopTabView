@@ -92,6 +92,24 @@ public class TopTabView extends ViewGroup {
 
     public void setViewPager(ViewPager viewPager) {
         this.mViewPager = viewPager;
+         if (mViewPager != null) {
+            mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    indexAnim(position);
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        }
     }
 
     private void dataNotifyChanged() {
@@ -113,24 +131,6 @@ public class TopTabView extends ViewGroup {
         }
         indexView = mAdapter.getIndexView();
         addView(indexView);
-        if (mViewPager != null) {
-            mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                }
-
-                @Override
-                public void onPageSelected(int position) {
-                    indexAnim(position);
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
-        }
     }
 
     private void indexAnim(int position) {
